@@ -1,6 +1,6 @@
 import React from 'react';
-import './homepage.css';
-import SignUp from './SignUp'; // Import the SignUp component
+import "./style.css";
+
 
 const Homepage = () => {
   return (
@@ -25,7 +25,8 @@ const Homepage = () => {
           <div className="submit"> Login </div>
         </div>
         <div className='submit-container2'>
-          <div className="submit"> Don't have an account? {<SignUp />}</div>
+          <div className="submit"> Don't have an account?</div>
+        
         </div>
       </div>
     </>
