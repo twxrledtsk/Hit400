@@ -16,6 +16,11 @@ const routes =[
     {
         path:"/signin",
         element:<Login/>
+    },
+    {
+        path: "/Login",
+        element: <Chome/>
+        
     }
 ]
 

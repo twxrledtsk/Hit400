@@ -44,6 +44,8 @@ export default function Home() {
           <Typography variant="h6" color="inherit" noWrap>
             HIT400
           </Typography>
+         
+          
         </Toolbar>
       </AppBar>
       <main>
