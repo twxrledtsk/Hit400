@@ -1,6 +1,7 @@
 import Home from "../Views/Home";
 import Login from "../Views/Login";
 import SignUp from "../Views/SignUp";
+import Chome from "../Views/Chome";
 
 const routes =[
     {
@@ -18,7 +19,7 @@ const routes =[
         element:<Login/>
     },
     {
-        path: "/Login",
+        path: "/login",
         element: <Chome/>
         
     }

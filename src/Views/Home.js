@@ -78,7 +78,7 @@ export default function Home() {
               spacing={2}
               justifyContent="center"
             >
-              <Button variant="outlined"><LinkR to="/signin" style={{textDecoration:"none"}}>Sign In</LinkR></Button>
+              <Button variant="outlined"><LinkR to="/login" style={{textDecoration:"none"}}>Sign In</LinkR></Button>
 
               <Button variant="outlined"><LinkR to="/signup" style={{textDecoration:"none"}}>Sign Up</LinkR></Button>
               
