@@ -17,7 +17,9 @@ import MenuIcon from '@mui/icons-material/Menu';
 
 
 export default function Chome(props) {
-  const { pages, settings } = props;
+  // const { pages, settings } = props;
+  const pages = ['Products','Pricing','Blog'];
+  const settings = ['Profile','Account','Dashboard','Logout'];
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
@@ -90,11 +92,11 @@ export default function Chome(props) {
               }}
             >
               {
-              //   pages.map((page) => (
-              //   <MenuItem key={page} onClick={handleCloseNavMenu}>
-              //     <Typography textAlign="center">{page}</Typography>
-              //   </MenuItem>
-              // ))
+                pages.map((page) => (
+                <MenuItem key={page} onClick={handleCloseNavMenu}>
+                  <Typography textAlign="center">{page}</Typography>
+                </MenuItem>
+              ))
             }
             </Menu>
           </Box>
@@ -119,15 +121,15 @@ export default function Chome(props) {
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {
-            //   pages.map((page) => (
-            //   <Button
-            //     key={page}
-            //     onClick={handleCloseNavMenu}
-            //     sx={{ my: 2, color: 'white', display: 'block' }}
-            //   >
-            //     {page}
-            //   </Button>
-            // ))
+              pages.map((page) => (
+              <Button
+                key={page}
+                onClick={handleCloseNavMenu}
+                sx={{ my: 2, color: 'white', display: 'block' }}
+              >
+                {page}
+              </Button>
+            ))
           }
           </Box>
 
@@ -154,11 +156,11 @@ export default function Chome(props) {
               onClose={handleCloseUserMenu}
             >
               {
-              //   settings.map((setting) => (
-              //   <MenuItem key={setting} onClick={handleCloseUserMenu}>
-              //     <Typography textAlign="center">{setting}</Typography>
-              //   </MenuItem>
-              // ))
+                settings.map((setting) => (
+                <MenuItem key={setting} onClick={handleCloseUserMenu}>
+                  <Typography textAlign="center">{setting}</Typography>
+                </MenuItem>
+              ))
             
             }
             </Menu>
