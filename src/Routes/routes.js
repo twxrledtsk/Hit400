@@ -20,7 +20,7 @@ const routes =[
     },
     {
         path: "/chome",
-        element: <select/>
+        element: <Chome/>
         
     }
 ]
