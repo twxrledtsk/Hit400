@@ -12,7 +12,7 @@ const Img = styled('img')({
   maxHeight: '100%',
 });
 
-export default function dance() {
+export default function dance(props) {
   return (
     <Paper
       sx={{
