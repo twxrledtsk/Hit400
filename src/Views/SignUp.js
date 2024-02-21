@@ -126,8 +126,9 @@ export default function SignUp() {
               fullWidth
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
-            >
+            ><LinkR to="/choose" style={{textDecoration:"none"}}>
               Sign Up
+              </LinkR>
             </Button>
             <Grid container justifyContent="flex-end">
               <Grid item>

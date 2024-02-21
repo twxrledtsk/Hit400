@@ -2,7 +2,8 @@ import Home from "../Views/Home";
 import Login from "../Views/Login";
 import SignUp from "../Views/SignUp";
 import Chome from "../Views/Chome";
-import select from "../Views/select";
+import choose from "../Views/choose";
+
 const routes =[
     {
         path:"/",
@@ -22,7 +23,13 @@ const routes =[
         path: "/chome",
         element: <Chome/>
         
-    }
+    },
+
+    {
+        path: "/choose",
+        element: <choose/>
+        
+    },
 ]
 
 
