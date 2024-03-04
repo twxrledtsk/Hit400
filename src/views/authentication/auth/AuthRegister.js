@@ -30,6 +30,7 @@ const AuthRegister = ({ title, subtitle, subtext }) => {
         e.preventDefault();
 
         const formData = new FormData();
+
         formData.append("company_name",full_name);
         formData.append("email",email);
         formData.append("contact",contact_number);
@@ -38,13 +39,14 @@ const AuthRegister = ({ title, subtitle, subtext }) => {
         
         if(images){
             for(let i = 0; i<images.length;i++){
-                formData.append("files",images[i]);
+                formData.append("file",images[i]);
             }
         }
 
         console.log("full_name", full_name);
         console.log("email", email);
         console.log("images", images);
+
 
         let status = await registerCompany(formData);
 
