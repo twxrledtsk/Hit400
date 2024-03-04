@@ -1,6 +1,40 @@
 const pool = require("../Database/db_config");
 const bcrypt = require("bcryptjs");
+const { uploadFile } = require("../Functions/fileUpload");
 const router = require("express").Router();
+const multer = require('multer');
+const fs = require('fs');
+const folderPath = './uploads';
+
+const storage = multer.diskStorage({
+    
+    destination: function (req, file, callback) {
+            // Create the folder
+fs.mkdir(folderPath+`/${req.body.company_name}`, { recursive: true }, (err) => {
+    if (err) {
+        console.error('Error creating folder:', err);
+    } else {
+        console.log('Folder created successfully.');
+    }
+});
+
+        callback(null, `./uploads/${req.body.company_name}`);
+    },
+    filename: function (req, file, callback) {
+       // You can write your own logic to define the filename here (before passing it into the callback), e.g:
+       console.log(file.originalname); // User-defined filename is available
+       const filename = `${file.originalname}`; // Create custom filename (crypto.randomUUID available in Node 19.0.0+ only)
+       callback(null, filename);
+    }
+  })
+
+
+const upload = multer({ 
+    storage: storage,
+    limits: {
+       fileSize: 1048576 // Defined in bytes (1 Mb)
+    }, 
+ });
 
 //Default Route
 router.get("/",(req,res)=>{
@@ -39,7 +73,25 @@ router.post("/upload_file",async(req,res)=>{
 
     }
 
+
+
 })
+
+
+
+
+// // Specify the path for the new folder
+
+
+// // Create the folder
+// fs.mkdir(folderPath, { recursive: true }, (err) => {
+//     if (err) {
+//         console.error('Error creating folder:', err);
+//     } else {
+//         console.log('Folder created successfully.');
+//     }
+// });
+
 
 //Register Users
 router.post("/register",(req,res)=>{
@@ -118,36 +170,49 @@ router.post("/login",(req,res)=>{
 });
 
 //Company Registration
-router.post("/register/company",(req,res)=>{
-    const formData = req.body;
-    console.log(formData);
+router.post("/register/company",upload.any(),(req,res)=>{
+    const companyData = req.body;
+    // uploadFile(req,res);
+    console.log(companyData);
 
+    console.log(req.files);
+    const sql = "INSERT INTO company (company_name,address,contact,email,password) VALUES (?,?,?,?,?)";
+    let password = bcrypt.hashSync(companyData.password,10);
+    const data =[companyData.company_name, companyData.address, companyData.contact, companyData.email,password];
 
-    // console.log("COMPANY DATA",req.body);
-    // const sql = "INSERT INTO company (company_name,address,contact,email,password) VALUES (?,?,?,?,?)";
-    // let password = bcrypt.hashSync(companyData.password,10);
-    // const data =[companyData.company_name, companyData.address, companyData.contact, companyData.email,password];
-
-    // try {
-    //     pool.query(sql,data,(err,results)=>{
-    //         if(err){
-    //             console.log(err);
-    //             return res.status(500).json({error:err});
-    //         }else{
-    //             if(results.affectedRows === 1){
-    //                 return res.status(200).json({message:"success"});
-    //             }else{
-    //                 return res.status(300).json({message:"failed to register company"})
-    //             }
-    //         }
-    //     })
-    // } catch (error) {
-    //     return res.status(500).json({error});
-    // }
-
-    return res.status(200).send("Ok")
+    try {
+        pool.query(sql,data,(err,results)=>{
+            if(err){
+                console.log(err);
+                return res.status(500).json({error:err});
+            }else{
+                if(results.affectedRows === 1){
+                    return res.status(200).json({message:"success"});
+                }else{
+                    return res.status(300).json({message:"failed to register company"})
+                }
+            }
+        })
+    } catch (error) {
+        return res.status(500).json({error});
+    }
 
 })
 
 
 module.exports = router;
+
+
+// const fs = require('fs');
+
+// // Specify the path of the folder you want to check
+// const folderPath = './existingFolder';
+
+// // Check if the folder exists
+// fs.access(folderPath, fs.constants.F_OK, (err) => {
+//     if (err) {
+//         console.error('Folder does not exist.');
+//     } else {
+//         console.log('Folder exists.');
+//     }
+// });
