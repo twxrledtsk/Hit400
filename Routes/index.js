@@ -75,8 +75,30 @@ router.post("/upload_file",async(req,res)=>{
 
 
 
-})
+});
 
+
+router.get("/companies",(req,res)=>{
+    const sql = "SELECT * FROM company";
+
+    try {
+        pool.query(sql,(err,results)=>{
+            if(err){
+                console.log(err);
+                return res.status(500).json({error:err});
+            }else{
+
+                if(results.length >0){
+                    return res.status(200).json({message:"success", companies:results});
+                }else{
+                    return res.status(300).json({message:"success", companies:[]});                    
+                }
+            }
+        })
+    } catch (error) {
+        
+    }
+})
 
 
 
