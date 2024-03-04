@@ -7,7 +7,7 @@ const YearlyBreakup = (props) => {
   // chart color
 
   return (
-    <DashboardCard title="Uploaded Files">
+    <DashboardCard title={props.title}>
       <Grid container>
         {/* column */}
         <Grid item xs={7} sm={7}>

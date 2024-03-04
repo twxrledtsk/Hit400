@@ -1,4 +1,4 @@
-import { ListAlt, Receipt, SpaceDashboard } from '@mui/icons-material';
+import { SpaceDashboard } from '@mui/icons-material';
 
 import { uniqueId } from 'lodash';
 
@@ -13,27 +13,12 @@ const Menuitems = [
 
   {
     id: uniqueId(),
-    title: 'Categorize Sentiments',
+    title: 'Companies',
     icon: SpaceDashboard,
-    href: '/dashboard/categorize-social-media-sentiments',
+    href: '/dashboard/companies',
   },
 
-  {
 
-    id:uniqueId(),
-    title:"Detect Negative Sentiments",
-    icon: ListAlt,
-    href:"/dashboard/detect-negative-sentiments"
-
-  },
-
-  {
-    id:uniqueId(),
-    title:"Personalized Campaigns",
-    icon: Receipt,
-    href:"/dashboard/personalize-campaigns"
-
-  }
 ]
 
 export default Menuitems;

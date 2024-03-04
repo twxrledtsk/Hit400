@@ -1,5 +1,5 @@
 import React, {  useState } from 'react';
-import { Grid, Box } from '@mui/material';
+import { Grid, Box, Stack } from '@mui/material';
 import PageContainer from 'src/components/container/PageContainer';
 import { BarGauge } from "devextreme-react";
 import { Label, Export, Title, Font} from "devextreme-react/bar-gauge";
@@ -34,36 +34,26 @@ const Dashboard = () => {
      
         <Grid container spacing={1}>
 
-          <Grid  item xs={12} lg={8} style={{width:"100%", height:"440px"}}>
-          <BarGauge
-          palette={"Carmine"}
-          id="gauge"
-          startValue={0}
-          endValue={100}
-          defaultValues={20}
-          height={"100%"}
-          width={"500px"}
-          >
-
-          <Label format={format}/>
-          <Export enabled={true} />
-          <Title text={"Credit Score"}>
-            <Font size={28} />
-          </Title>
-          
-        
-          </BarGauge>
-
-
-          </Grid>
-
           <Grid item xs={12} lg={4}>
 
             <Grid container spacing={3}>
 
-              <Grid item xs={12}>
-                <YearlyBreakup total={34} />
-              </Grid>
+            <Stack direction={"row"} spacing={2}>
+            
+            <Grid item xs={12} minWidth={"300px"}>
+            <YearlyBreakup title="Pending Registrations" total={10} />
+            </Grid>
+
+            <Grid item xs={12} minWidth={"300px"}>
+            <YearlyBreakup title="Subscribed Clients" total={5} />
+            </Grid>
+
+
+            <Grid item xs={12} minWidth={"300px"}>
+            <YearlyBreakup title="Expired Subscriptions" total={4} />
+            </Grid>
+            
+            </Stack>
 
             </Grid>
           </Grid>

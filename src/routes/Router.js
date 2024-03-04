@@ -14,10 +14,7 @@ const Register = Loadable(lazy(() => import('../views/authentication/Register'))
 const Login = Loadable(lazy(() => import('../views/authentication/Login')));
 const Home = Loadable(lazy(()=>import("../views/home/home")));
 const About = Loadable(lazy(()=> import('../views/about/About')));
-const PersonalizedCampaigns = Loadable(lazy(()=> import('../views/PersonalizedCampaigns/PersonalizedCampaigns')));
-const NegativeSentiments = Loadable(lazy(()=> import('../views/NegativeSentiments/NegativeSentiments')));
-const CategorizeSentiments = Loadable(lazy(()=> import('../views/CategorizeSentiments/CategorizeSentiments')));
-const CompanyRegistration = Loadable(lazy(()=> import("../views/CompanyRegistration/CompanyRegistration")));
+const Companies = Loadable(lazy(()=> import("../views/Companies/Companies")));
 
 const Router = [
 
@@ -33,10 +30,6 @@ const Router = [
       {
         path:"/about",
         element:<About/>
-      },
-      {
-        path:"/company-registration",
-        element:<CompanyRegistration/>
       }
     ]
 
@@ -48,9 +41,7 @@ const Router = [
     element: <FullLayout />,
     children: [
       { path: '/dashboard', exact: true, element: <Dashboard /> },
-      { path: '/dashboard/personalize-campaigns', exact: true, element:<PersonalizedCampaigns/> },
-      { path: '/dashboard/detect-negative-sentiments', exact: true, element:<NegativeSentiments/> },
-      { path: '/dashboard/categorize-social-media-sentiments', exact: true, element:<CategorizeSentiments/> },
+      { path: '/dashboard/companies', exact: true, element:<Companies/> },,
       { path: '*', element: <Navigate to="/dashboard/auth/404" /> },
     ],
   },

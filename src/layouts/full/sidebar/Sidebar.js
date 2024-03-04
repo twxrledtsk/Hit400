@@ -1,5 +1,6 @@
 import { useMediaQuery, Box, Drawer } from '@mui/material';
 import SidebarItems from './SidebarItems';
+import companyName from 'src/utils/CompanyName';
 
 const Sidebar = (props) => {
 
@@ -41,7 +42,7 @@ const Sidebar = (props) => {
             {/* Logo */}
             {/* ------------------------------------------- */}
             <Box px={3}>
-             <h2>SMSA</h2>
+             <h2>{companyName}</h2>
             </Box>
             <Box>
               {/* ------------------------------------------- */}
