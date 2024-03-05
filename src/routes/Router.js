@@ -15,6 +15,7 @@ const Login = Loadable(lazy(() => import('../views/authentication/Login')));
 const Home = Loadable(lazy(()=>import("../views/home/home")));
 const About = Loadable(lazy(()=> import('../views/about/About')));
 const Companies = Loadable(lazy(()=> import("../views/Companies/Companies")));
+const CompanyDetail =Loadable(lazy(()=>import("../views/CompanyDetails/CompanyDetail")));
 
 const Router = [
 
@@ -41,7 +42,8 @@ const Router = [
     element: <FullLayout />,
     children: [
       { path: '/dashboard', exact: true, element: <Dashboard /> },
-      { path: '/dashboard/companies', exact: true, element:<Companies/> },,
+      { path: '/dashboard/companies', exact: true, element:<Companies/> },
+      { path: '/dashboard/company-details', exact: true, element:<CompanyDetail/> },
       { path: '*', element: <Navigate to="/dashboard/auth/404" /> },
     ],
   },

@@ -5,11 +5,12 @@ import getCompanies from "src/api/getCompanies";
 import PageContainer from "src/components/container/PageContainer";
 import DashboardCard from "src/components/shared/DashboardCard";
 import "react-toastify/dist/ReactToastify.css";
-import { Tab } from "wd/lib/special-keys";
 import { IconEye } from "@tabler/icons";
+import { useNavigate } from "react-router";
 
 const Companies = () => {
 
+    const navigate = useNavigate();
     const [companyList,setCompanyList] = useState(null);
 
 
@@ -51,6 +52,7 @@ const Companies = () => {
         <TableCell>Subscription Expires</TableCell>
         <TableCell>Address</TableCell>
         <TableCell>Contact</TableCell>
+        <TableCell>Approval</TableCell>
         <TableCell></TableCell>
         </TableRow>
         </TableHead>
@@ -65,7 +67,14 @@ const Companies = () => {
                     <TableCell>Subscription Expires</TableCell>
                     <TableCell>{company.address}</TableCell>
                     <TableCell>{company.contact}</TableCell>
-                    <TableCell><IconEye/></TableCell>
+                    {
+                        company.approval == 0 ?(
+                            <TableCell>Pending</TableCell>
+                        ):(
+                            <TableCell>Approved</TableCell>
+                        )
+                    }
+                    <TableCell><IconEye onClick={()=>navigate("/dashboard/company-details")}/></TableCell>
                     </TableRow>
                 ))
             ):(
